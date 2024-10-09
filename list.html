@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Images</title>
+</head>
+<body>
+    <h1>Uploaded Images</h1>
+
+    <form action="/list" method="get">
+        <label>
+            <input type="checkbox" name="encrypted"> Show only encrypted images
+        </label>
+        <button type="submit">Filter</button>
+    </form>
+
+    {% if files %}
+    <ul>
+        {% for file in files %}
+        <li>
+            {{ file }} - <a href="/download/{{ file }}">Download</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No images found.</p>
+    {% endif %}
+</body>
+</html>
